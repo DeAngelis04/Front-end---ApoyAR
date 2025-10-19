@@ -4,6 +4,7 @@ import logo from "../../assets/LOGO.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Darkmode from "./Tema";
+import { Outlet } from "react-router-dom";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -37,13 +38,14 @@ const Nav = () => {
 
       
       <ul className={`${styles.navLinks} ${open ? styles.active : ""}`}>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Causas</a></li>
-        <li><a href="#">Crear causa</a></li>
-        <li><a href="#">Acerca de</a></li>
+        <li><a href="Inicio">Inicio</a></li>
+        <li><a href="Causas">Causas</a></li>
+        <li><a href="Crear causa">Crear causa</a></li>
+        <li><a href="Acerca de">Acerca de</a></li>
         <Darkmode theme={theme} toggleTheme={toggleTheme} />
-      </ul>
+      </ul><Outlet/>
     </nav>
+    
   );
 };
 
