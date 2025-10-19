@@ -4,23 +4,21 @@ import logo from "../../assets/LOGO.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Darkmode from "./Tema";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState("light");
 
-  const toggleTheme = () =>
-    setTheme(theme === "light" ? "dark" : "light");
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
   useEffect(() => {
-    document.body.className = theme; // agrega la clase al body
+    document.body.className = theme;
   }, [theme]);
 
   return (
     <nav className={styles.nav}>
       <img src={logo} alt="logo" className={styles.logo} />
-      
 
       <div className={styles.contenedorboton}>
         <button
@@ -36,16 +34,26 @@ const Nav = () => {
         </button>
       </div>
 
-      
       <ul className={`${styles.navLinks} ${open ? styles.active : ""}`}>
-        <li><a href="Inicio">Inicio</a></li>
-        <li><a href="Causas">Causas</a></li>
-        <li><a href="Crear causa">Crear causa</a></li>
-        <li><a href="Acerca de">Acerca de</a></li>
+        <li>
+          <Link to="/">Inicio</Link>
+        </li>
+        <li>
+          <Link to="/causas">Causas</Link>
+        </li>
+        <li>
+          <Link to="/crear-causa">Crear causa</Link>
+        </li>
+        <li>
+          <Link to="/acerca-de">Acerca de</Link>
+        </li>
+        <li>
+          <Link to="/Formulario">Crear Cuenta</Link>
+        </li>
         <Darkmode theme={theme} toggleTheme={toggleTheme} />
-      </ul><Outlet/>
+      </ul>
+      <Outlet />
     </nav>
-    
   );
 };
 
