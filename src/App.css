@@ -1,0 +1,19 @@
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f0f0f0;
+}
+
+/* Tema oscuro */
+body.dark {
+  --bg-color: #000814;
+  --text-color: #ffffff;
+  --card-bg: #001233;
+}
+
+/* Aplica las variables globales */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}

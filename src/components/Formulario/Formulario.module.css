@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+.dark{
+  --bg-color:#000814;
+  --text-color:#ffff;
+   --boton-color:#ffff;
+}
+.light{
+  --bg-color:#ffff;
+  --text-color:#000814;
+  --boton-color:#000814;
+}
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  padding: 1rem;
+  transition: background-color 0.3s;
+  min-height: calc(100vh - 1rem);
+  
+ 
+}
+.contenedordatos {
+  padding-top: 1rem;
+}
+.titulo {
+  font-size: 2rem;
+  font-family: "Inter", sans-serif;
+  color: #41fa85;
+  padding-top: 1rem;
+}
+.tienescuenta {
+   font-family: system-ui;
+  color: #75AFE1;
+  font-size: 9px;
+}
+.texto {
+   font-family: system-ui;
+  color: var(--text-color);
+  font-size: 12px;
+  padding-bottom: 0.3rem;
+}
+.formularios {
+    border-radius: 5px;
+    padding: 7px;
+    border: 1px solid #8b8c89; 
+    outline: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+     font-family: "bold" system-ui;
+    width: 250px;
+    transition: background-color 0.3s;
+    
+}
+.formularios:imput{
+    outline: none;
+    
+  box-shadow: none;
+} 
+.enlace {
+  text-decoration: none;
+  color: var(--text-color);
+  border-radius: 2rem;
+}
+.contenedorboton {
+  padding-top: 2rem;
+}
+.boton {
+  border: none;
+  background-color: #41fa85;
+  padding: 0.5rem;
+  border-radius: 10px;
+  color: #ffff;
+  font-family: "Inter", sans-serif;
+  width: 250px;
+  box-shadow: 0 2px 5px 5px #41fa85;
+  transition: 0.3s;
+  
+}

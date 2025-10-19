@@ -1,0 +1,120 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.dark{
+  --bg-color:#000814;
+  --tema-color: #000814 ;
+}
+.light{
+  --bg-color:#ffff;
+  --tema-color: #ffff;
+}
+
+
+
+.nav {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-color);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px #41fa85;
+  position: relative;
+   transition: background-color 0.3s;
+   justify-content: space-between;
+  
+}
+
+.logo{
+  height: 3rem;
+ padding-left: 1px;
+
+ 
+}
+.contenedortema{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ 
+}
+.tema{
+  border-radius: 10px;
+  height: 30px;
+  width: 30px;
+  background-color: #41fa85;
+  border: none;
+  color: var(--tema-color)
+  
+  
+}
+.contenedorboton{
+  padding-left: 12rem;
+}
+.menuBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  color: #41fa85;
+  border-radius: 100%;
+}
+
+
+.menuIcon {
+  width: 28px;
+  height: 28px;
+  padding-right: 1rem;
+}
+
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  font-family: "Inter", sans-serif;
+  align-items: center;
+  
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #41fa85;
+  font-weight: 500;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .menuBtn {
+    display: block;
+  }
+
+  .navLinks {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 1rem;
+    top: 70px;
+    background: var(--bg-color);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px 4px #41fa85;
+    font-family: "Inter", sans-serif;
+    transition: background-color 0.3s;
+    border-color: #41fa85;
+    align-items: center;
+    
+  }
+
+  .active {
+    display: flex;
+    
+  }
+}
