@@ -38,6 +38,9 @@ const Nav = () => {
         <li>
           <Link to="/">Inicio</Link>
         </li>
+         <li>
+          <Link to="/Iniciosesion">Iniciar sesión</Link>
+        </li>
         <li>
           <Link to="/causas">Causas</Link>
         </li>

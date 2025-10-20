@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+.dark {
+  --bg-color: #000814;
+  --text-color: #ffff;
+  --boton-color: #ffff;
+}
+.light {
+  --bg-color: #ffff;
+  --text-color: #0066ff;
+  --boton-color: #000814;
+}
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 7rem - 3.1rem);
+  padding: 1rem;
+  
+}
+.contenedortop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+.campos {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #41fa85; 
+  padding: 1rem;
+  border-radius: 10px;
+
+}
+.titulo {
+  color: #41fa85;
+  font-family: "Inter", sans-serif;
+}
+.subtitulo {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+}
+.contenedortexto{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+.texto {
+  font-family: "Inter", sans-serif;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+.inputs {
+  border-radius: 5px;
+    padding: 7px;
+    border: 1px solid #8b8c89; 
+    outline: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+     font-family: "bold" system-ui;
+    
+    transition: background-color 0.3s;
+    min-width: 100%;
+}
+.descripcion{
+   border-radius: 5px;
+    padding: 3rem;
+    border: 1px solid #8b8c89; 
+    outline: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+     font-family: "bold" system-ui;
+    max-width: 100%;
+    transition: background-color 0.3s;
+    
+}
+.boton{
+border: none;
+  background-color: #41fa85;
+  padding: 0.5rem;
+  border-radius: 10px;
+  color: #ffff;
+  font-family: "Inter", sans-serif;
+  width: 250px;
+  box-shadow: 0 2px 5px 5px #41fa85;
+  transition: 0.3s;
+} 

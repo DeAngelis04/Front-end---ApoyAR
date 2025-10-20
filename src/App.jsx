@@ -7,7 +7,7 @@ import Inicio from "./components/Inicio/Inicio";
 import Causas from "./components/Causas/Causas";
 import CrearCausa from "./components/CrearCausa/CrearCausa";
 import AcercaDe from "./components/AcercaDe/AcercaDe";
-
+import Iniciosesion from "./components/Iniciodesesion/Iniciosesion";
 function App() {
   return (
     <>
@@ -15,6 +15,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Inicio />} />
+         <Route path="/Iniciosesion" element={<Iniciosesion />} />
         <Route path="/causas" element={<Causas />} />
         <Route path="/crear-causa" element={<CrearCausa />} />
         <Route path="/acerca-de" element={<AcercaDe />} />
