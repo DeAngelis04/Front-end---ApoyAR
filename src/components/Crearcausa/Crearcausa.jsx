@@ -1,6 +1,55 @@
+import { useState } from "react";
+import axios from "axios";
 import styles from "./Crearcausa.module.css";
 
 const Crearcausa = () => {
+  const [titulo, setTitulo] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [categoria, setCategoria] = useState(["Salud", "Sociedad", "Tecnología"]);
+  //const [objetivo, setObjetivo] = useState("");
+  const [alias, setAlias] = useState("");
+  const [archivo, setArchivo] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      
+      const formData = new FormData();
+      formData.append("title", titulo);
+      formData.append("description", descripcion);
+      formData.append("categories", categoria);
+      
+      formData.append("infoTransf", alias);
+      if (archivo) formData.append("archivo", archivo);
+
+      const token = localStorage.getItem("token"); 
+      const res = await axios.post(
+        "https://apoyar-backend.onrender.com/petitions/postPetition",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      alert( res.data.message || "Recaudación creada ✅");
+     
+      setTitulo("");
+      setDescripcion("");
+      setCategoria("");
+      //setObjetivo("");
+      setAlias("");
+      setArchivo(null);
+    } catch (err) {
+      alert(err.response?.data?.error || "Error al crear recaudación ❌");
+    }
+  };
+
+  
+  
   return (
     <div className={styles.contenedor}>
       <div className={styles.contenedortop}>
@@ -18,6 +67,7 @@ const Crearcausa = () => {
           className={styles.inputs}
           type="text"
           placeholder="Ej: Ayuda para tratamiento médico"
+          onChange={(e) => setTitulo(e.target.value)}
         />
 
         <div className={styles.contenedortexto}>
@@ -26,6 +76,7 @@ const Crearcausa = () => {
         <textarea
           className={styles.descripcion}
           placeholder="Explica por qué necesitas ayuda, cómo se usarán los fondos, etc."
+          onChange={(e) => setDescripcion(e.target.value)}
         />
 
         <div className={styles.contenedortexto}>
@@ -47,7 +98,7 @@ const Crearcausa = () => {
         <div className={styles.contenedortexto}>
           <p className={styles.texto}>Alias de Mercado Pago</p>
         </div>
-        <input className={styles.inputs} type="text" placeholder="tu.alias.mp" />
+        <input onChange={(e) => setAlias(e.target.value)} className={styles.inputs} type="text" placeholder="tu.alias.mp" />
 
         <div className={styles.contenedortexto}>
           <p className={styles.texto}>Subir fotos y videos</p>
@@ -57,7 +108,7 @@ const Crearcausa = () => {
           <p>PNG, JPG, GIF hasta 10MB</p>
         </div>
 
-        <button className={styles.boton}>Crear recaudación</button>
+        <button onClick={handleSubmit} className={styles.boton}>Crear recaudación</button>
       </div>
     </div>
   );

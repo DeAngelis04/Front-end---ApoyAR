@@ -124,8 +124,8 @@ const Acercade = () => {
         <h3>Contacto</h3>
         <p>
           ¿Preguntas? Escribinos a{" "}
-          <a  href="mailto:contacto@ayudarargentina.org">
-            contacto@ayudarargentina.org
+          <a  href="mailto:apoyargentina@gmail.com">
+            apoyargentina@gmail.com
           </a>
         </p>
       </div>

@@ -82,7 +82,12 @@
   color: #ffff;
   font-family: "Inter", sans-serif;
   width: 250px;
-  box-shadow: 0 2px 5px 5px #41fa85;
-  transition: 0.3s;
   
+  transition: 0.3s;
+   cursor: pointer;
+  
+  
+}
+.boton:hover {
+  box-shadow: 0 2px 10px rgba(65, 250, 133, 0.6);
 }

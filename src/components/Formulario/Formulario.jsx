@@ -16,11 +16,12 @@ const Formulario = () => {
     }
 console.log(username,email,password);
     try {
-      const res = await axios.post("http://localhost:5000/register", {
+      const res = await axios.post("https://apoyar-backend.onrender.com/users/postUser", {
         username,
         email,
         password,
       });
+      console.log(res.data)
       alert(res.data.message || "Cuenta creada exitosamente ✅");
       window.location.href = "/Iniciosesion"; 
     } catch (err) {
