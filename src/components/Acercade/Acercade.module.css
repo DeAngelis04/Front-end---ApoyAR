@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+.dark{
+  --bg-color:#000814;
+  --text-color:#ffff;
+   --boton-color:#ffff;
+}
+.light{
+  --bg-color:#ffff;
+  --text-color:#000814;
+  --boton-color:#000814;
+}
+.contenedor {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: "Inter", sans-serif;
+  min-height: calc(100vh - 7rem - 7rem);
+}
+
+.titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #41fa85;
+}
+
+.bloque {
+  background: var(--bg-color);
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: background 0.3s ease;
+ 
+  
+}
+
+.icono {
+  font-size: 1.5rem;
+  color: #41fa85;
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.texto {
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+
+.seccion {
+  margin-top: 2rem;
+}
+
+.tituloseccion {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.acordeon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.item {
+  background: var(--bg-color);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.item:hover {
+  background: var(--bg-color);
+}
+
+.pregunta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.iconoflecha {
+  transition: transform 0.3s ease;
+  color: #41fa85;
+}
+
+.girar {
+  transform: rotate(180deg);
+}
+
+.respuesta {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  line-height: 1.4;
+  animation: desplegar 0.3s ease forwards;
+}
+
+@keyframes desplegar {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.redes {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.iconosredes {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  color: var(--text-color);
+}
+
+.iconosredes svg:hover {
+  color: #41fa85;
+}
+.enlaces{
+    text-decoration: none;
+    color: #41fa85;
+}
+
+.contacto {
+  background: var(--bg-color);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+   transition: background 0.3s ease;
+}
+
+.contacto a {
+  color: #41fa85;
+  text-decoration: none;
+}
+
+.contacto a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 600px) {
+  .bloque {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .titulo {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .subtitulo {
+    font-size: 1rem;
+  }
+
+  .texto {
+    font-size: 0.9rem;
+  }
+
+  .iconosredes {
+    gap: 1rem;
+  }
+}
