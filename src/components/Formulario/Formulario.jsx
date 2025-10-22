@@ -7,6 +7,7 @@ const Formulario = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const [profilePic, setProfilePic] = useState(null); // <- nueva
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -14,16 +15,25 @@ const Formulario = () => {
       alert("Las contraseñas no coinciden ❌");
       return;
     }
-console.log(username,email,password);
+
     try {
-      const res = await axios.post("https://apoyar-backend.onrender.com/users/postUser", {
-        username,
-        email,
-        password,
-      });
-      console.log(res.data)
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("password", password);
+      if (profilePic) formData.append("image", profilePic); 
+
+      const res = await axios.post(
+        "https://apoyar-backend.onrender.com/auth/postUser",
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+
+      
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
       alert(res.data.message || "Cuenta creada exitosamente ✅");
-      window.location.href = "/Iniciosesion"; 
+      window.location.href = "/Iniciosesion";
     } catch (err) {
       alert(err.response?.data?.error || "Error al registrarse ❌");
     }
@@ -76,6 +86,16 @@ console.log(username,email,password);
             type="password"
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}
+          />
+        </div>
+
+        {/* NUEVO INPUT DE FOTO */}
+        <div className={styles.contenedordatos}>
+          <p className={styles.texto}>Foto de perfil (opcional)</p>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setProfilePic(e.target.files[0])}
           />
         </div>
 

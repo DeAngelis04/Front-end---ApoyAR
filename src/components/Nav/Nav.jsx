@@ -9,16 +9,28 @@ import { Link, Outlet } from "react-router-dom";
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState("light");
-
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+  const [user, setUser] = useState(null); 
 
   useEffect(() => {
+    //const storedUser = JSON.parse(localStorage.getItem("user"));
+    //if (storedUser) setUser(storedUser);
     document.body.className = theme;
   }, [theme]);
+
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
   return (
     <nav className={styles.nav}>
       <img src={logo} alt="logo" className={styles.logo} />
+
+    
+      {user?.profilePic && (
+        <img
+          src={user.profilePic} 
+          alt="perfil"
+          className={styles.profilePic}
+        />
+      )}
 
       <div className={styles.contenedorboton}>
         <button
@@ -38,7 +50,7 @@ const Nav = () => {
         <li>
           <Link to="/">Inicio</Link>
         </li>
-         <li>
+        <li>
           <Link to="/Iniciosesion">Iniciar sesión</Link>
         </li>
         <li>

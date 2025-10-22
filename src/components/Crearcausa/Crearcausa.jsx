@@ -5,7 +5,7 @@ import styles from "./Crearcausa.module.css";
 const Crearcausa = () => {
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
-  const [categoria, setCategoria] = useState(["Salud", "Sociedad", "Tecnología"]);
+  const [categoria, setCategoria] = useState([]);
   //const [objetivo, setObjetivo] = useState("");
   const [alias, setAlias] = useState("");
   const [archivo, setArchivo] = useState(null);
@@ -14,16 +14,14 @@ const Crearcausa = () => {
     e.preventDefault();
 
     try {
-      
       const formData = new FormData();
       formData.append("title", titulo);
       formData.append("description", descripcion);
-      formData.append("categories", categoria);
-      
+      formData.append("categories", JSON.stringify(categoria));
+      formData.append("images", archivo);
       formData.append("infoTransf", alias);
-      if (archivo) formData.append("archivo", archivo);
 
-      const token = localStorage.getItem("token"); 
+      const token = localStorage.getItem("token");
       const res = await axios.post(
         "https://apoyar-backend.onrender.com/petitions/postPetition",
         formData,
@@ -35,8 +33,8 @@ const Crearcausa = () => {
         }
       );
 
-      alert( res.data.message || "Recaudación creada ✅");
-     
+      alert(res.data.message || "Recaudación creada ✅");
+
       setTitulo("");
       setDescripcion("");
       setCategoria("");
@@ -44,12 +42,15 @@ const Crearcausa = () => {
       setAlias("");
       setArchivo(null);
     } catch (err) {
-      alert(err.response?.data?.error || "Error al crear recaudación ❌");
+      alert(err.response?.data?.message || "Error al crear recaudación ❌");
     }
   };
 
-  
-  
+  const handleCategory = (e) => {
+    setCategoria([e.target.value]);
+    console.log(categoria);
+  }
+
   return (
     <div className={styles.contenedor}>
       <div className={styles.contenedortop}>
@@ -82,33 +83,45 @@ const Crearcausa = () => {
         <div className={styles.contenedortexto}>
           <p className={styles.texto}>Categoría</p>
         </div>
-        <select className={styles.inputs}>
+        <select
+          className={styles.inputs}
+          value={categoria}
+          onChange={handleCategory}
+        >
           <option value="">Selecciona una categoría</option>
-          <option value="salud">Salud</option>
-          <option value="educacion">Educación</option>
-          <option value="animales">Animales</option>
-          <option value="otros">Otros</option>
+          <option value="Salud">Salud</option>
+          <option value="Educacion">Educación</option>
+          <option value="Animales">Animales</option>
+          <option value="Otros">Otros</option>
         </select>
 
-        <div className={styles.contenedortexto}>
+        {/* <div className={styles.contenedortexto}>
           <p className={styles.texto}>Objetivo de fondos (ARS)</p>
         </div>
-        <input className={styles.inputs} type="number" placeholder="$ 50000" />
+        <input className={styles.inputs} type="number" placeholder="$ 50000" /> */}
 
         <div className={styles.contenedortexto}>
           <p className={styles.texto}>Alias de Mercado Pago</p>
         </div>
-        <input onChange={(e) => setAlias(e.target.value)} className={styles.inputs} type="text" placeholder="tu.alias.mp" />
+        <input
+          onChange={(e) => setAlias(e.target.value)}
+          className={styles.inputs}
+          type="text"
+          placeholder="tu.alias.mp"
+        />
 
         <div className={styles.contenedortexto}>
           <p className={styles.texto}>Subir fotos y videos</p>
         </div>
         <div className={styles.subirArchivo}>
           <p>Sube un archivo o arrástralo aquí</p>
-          <p>PNG, JPG, GIF hasta 10MB</p>
+          <p>PNG, JPG, GIF hasta 5MB</p>
+          <input type="file" onChange={(e) => setArchivo(e.target.files[0])} />
         </div>
 
-        <button onClick={handleSubmit} className={styles.boton}>Crear recaudación</button>
+        <button onClick={handleSubmit} className={styles.boton}>
+          Crear recaudación
+        </button>
       </div>
     </div>
   );

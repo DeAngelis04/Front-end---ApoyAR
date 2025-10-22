@@ -15,6 +15,7 @@ const Iniciosesion = () => {
         password,
       });
       localStorage.setItem("token", res.data.token);
+      console.log(res.data.token);
       alert("Inicio de sesión exitoso ✅");
     } catch (err) {
       alert(err.response?.data?.error || "Error al iniciar sesión ❌");
